@@ -1,4 +1,4 @@
-// src/app/(responsavel)/responsavel/painel/page.tsx
+// painel do responsavel - client
 import { createClient } from '@/lib/supabase/server'
 import { AREAS_ENEM, type AreaENEM } from '@/types'
 import { format } from 'date-fns'
