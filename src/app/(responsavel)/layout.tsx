@@ -1,4 +1,3 @@
-// src/app/(responsavel)/layout.tsx
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import SidebarResponsavel from '@/components/responsavel/SidebarResponsavel'
