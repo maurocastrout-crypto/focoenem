@@ -1,21 +1,19 @@
 'use client'
-// src/components/responsavel/SidebarResponsavel.tsx
-
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import type { User } from '@/types'
 
 const navItems = [
-  { href: '/responsavel/painel',          label: 'Painel',        icon: '⊞' },
-  { href: '/responsavel/relatorio',       label: 'Relatório',     icon: '📊' },
-  { href: '/responsavel/configuracoes',   label: 'Configurações', icon: '⚙️' },
+  { href: '/resp/painel',               label: 'Painel',        icon: '⊞' },
+  { href: '/responsavel/relatorio',     label: 'Relatório',     icon: '📊' },
+  { href: '/responsavel/configuracoes', label: 'Configurações', icon: '⚙️' },
 ]
 
 export default function SidebarResponsavel({ user }: { user: User }) {
   const pathname = usePathname()
   const supabase = createClient()
-  const iniciais = `${user.nome[0]}${user.sobrenome[0]}`.toUpperCase()
+  const iniciais = (user.nome[0] + user.sobrenome[0]).toUpperCase()
 
   async function handleLogout() {
     await supabase.auth.signOut()
@@ -34,9 +32,7 @@ export default function SidebarResponsavel({ user }: { user: User }) {
           const active = pathname === item.href
           return (
             <Link key={item.href} href={item.href}
-              className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium transition-all ${
-                active ? 'bg-accent/10 text-accent' : 'text-muted hover:bg-surface2 hover:text-white'
-              }`}>
+              className={'flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium transition-all ' + (active ? 'bg-accent/10 text-accent' : 'text-muted hover:bg-surface2 hover:text-white')}>
               <span className="text-base">{item.icon}</span>
               {item.label}
             </Link>
