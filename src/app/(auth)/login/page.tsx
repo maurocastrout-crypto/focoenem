@@ -31,7 +31,7 @@ export default function LoginPage() {
       .from('users').select('role').eq('id', data.user.id).single()
 
     if (profile?.role === 'responsavel') {
-      router.push('/responsavel/painel')
+      router.push('/responsavel/dashboard')
     } else {
       router.push('/painel')
     }
